@@ -41,5 +41,5 @@ jobs:
         run: |
           foreach ($dir in (Get-ChildItem ./PowerShell)) {
             $metadata = Get-Content "$($dir.fullname)/metadata.json" | ConvertFrom-Json -AsHashtable
-            ./runway.bin build -it $($dir.fullname)/manifest.txt -p $metadata['tag']
+            ./runway.bin build -it "$($dir.fullname)/manifest.txt" -p $metadata['tag']
           }
