@@ -1,3 +1,3 @@
 COPY . .
 
-RUN_WIN "Powershell.exe -ExecutionPolicy Bypass -File .\GetInstalledSoftware.ps1"
+RUN_WIN "Powershell.exe -ExecutionPolicy Bypass -File .\Windows\Scripts\GetInstalledSoftware.ps1"
