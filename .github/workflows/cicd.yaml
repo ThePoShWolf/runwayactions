@@ -45,5 +45,5 @@ jobs:
             $rPath = $manifest.FullName.Replace($baseDir.FullName,'').Trim('\/')
             $namespace = ($rPath -split '\\|\/' | Select-Object -SkipLast 2) -join ':'
             # Publish the Action
-            ./runway.bin build -it $manifest.FullName -p $namespace
+            ./runway.bin build -it $manifest.FullName -p $namespace.ToLower()
           }
