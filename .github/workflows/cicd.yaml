@@ -32,14 +32,18 @@ jobs:
           chmod +x ./runway.bin
 
       # Runs a set of commands using the runners shell
-      - name: Auth to runway
+      - name: Auth to Runway
         run: |
           ./runway.bin login -u ${{ secrets.RUNWAY_EMAIL }} -p ${{ secrets.RUNWAY_PASSWORD }}
 
       - name: Build Each Action
         shell: pwsh
         run: |
-          foreach ($dir in (Get-ChildItem ./PowerShell)) {
-            $metadata = Get-Content "$($dir.fullname)/metadata.json" | ConvertFrom-Json -AsHashtable
-            ./runway.bin build -it "$($dir.fullname)/manifest.txt" -p $metadata['tag']
+          $baseDir = Get-Item ./
+          foreach ($manifest in (Get-ChildItem ./ -Filter manifest.txt -Recurse)) {
+            # Determine namespace based on folder structure
+            $rPath = $manifest.FullName.Replace($baseDir.FullName,'').Trim('\/')
+            $namespace = ($rPath.Split('\/') | Select-Object -SkipLast 2) -join ':'
+            # Publish the Action
+            ./runway.bin build -it $manifest.FullName -p $namespace
           }
