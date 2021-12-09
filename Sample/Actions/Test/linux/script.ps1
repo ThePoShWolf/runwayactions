@@ -1,3 +1,7 @@
+Write-Host $ErrorActionPreference
+
+$ErrorActionPreference = 'Continue'
+
 Write-Host 'Write-Host'
 Write-Output 'Write-Output'
 Get-Process | Format-Table
