@@ -3,7 +3,7 @@ Write-Output 'Write-Output'
 Get-Process | Format-Table
 Get-Item blah.md
 
-$settings = Get-Content ./settings.json | ConvertFrom-Json
+$settings = Get-Content ../settings.json | ConvertFrom-Json
 
 <#Start-Process runway.exe -ArgumentList @('-N','-S',$settings.host,'download') -Wait
 
@@ -12,4 +12,4 @@ foreach ($zip in $zipFiles) {
     Expand-Archive -Path $zip.FullName -DestinationPath ./Results
 }#>
 
-Copy-Item ./*.* -Destination ./Results
+Copy-Item ../*.* -Destination ./Results
