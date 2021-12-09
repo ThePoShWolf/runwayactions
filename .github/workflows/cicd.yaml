@@ -43,7 +43,7 @@ jobs:
           foreach ($manifest in (Get-ChildItem ./ -Filter manifest.txt -Recurse)) {
             # Determine namespace based on folder structure
             $rPath = $manifest.FullName.Replace($baseDir.FullName,'').Trim('\/')
-            $namespace = ($rPath -split '\\|\/' | Select-Object -SkipLast 2) -join ':'
+            $namespace = ($rPath -split '\\|\/' | Select-Object -SkipLast 1) -join ':'
             # Publish the Action
             ./runway.bin build -it $manifest.FullName -p $namespace.ToLower()
           }
