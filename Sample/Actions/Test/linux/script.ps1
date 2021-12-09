@@ -5,7 +5,7 @@ $ErrorActionPreference = 'Continue'
 Write-Host 'Write-Host'
 Write-Output 'Write-Output'
 Get-Process | Format-Table
-Get-Item blah.md
+Get-Item blah.md -ErrorAction Continue
 
 $settings = Get-Content ../settings.json | ConvertFrom-Json
 
