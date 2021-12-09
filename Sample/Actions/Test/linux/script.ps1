@@ -22,6 +22,6 @@ Get-Item ../Results
 
 Get-Item ../*.*
 
-Copy-Item ../*.* -Destination ../Results -Verbose
+Copy-Item ../*.* -Destination ../results -Verbose
 
 Write-Host 'End'
