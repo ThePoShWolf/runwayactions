@@ -16,4 +16,6 @@ foreach ($zip in $zipFiles) {
     Expand-Archive -Path $zip.FullName -DestinationPath ./Results
 }#>
 
-Copy-Item ../*.* -Destination ./Results
+Copy-Item ../*.* -Destination ../Results
+
+Write-Host 'End'
