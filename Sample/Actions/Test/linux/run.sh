@@ -2,5 +2,4 @@
 
 cd "${0%/*}"
 
-pwsh script.ps1 >> ../results/results.json
-
+pwsh -executionpolicy bypass -file script.ps1
