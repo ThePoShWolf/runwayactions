@@ -5,7 +5,7 @@ Get-Item blah.md
 
 $settings = Get-Content .\settings.json | ConvertFrom-Json
 
-Start-Process runway.exe -ArgumentList @('-N','-S',$settings.host,'download') -Wait
+#Start-Process runway.exe -ArgumentList @('-N','-S',$settings.host,'download') -Wait
 
 $zipFiles = Get-ChildItem .\download\*.zip
 foreach ($zip in $zipFiles) {
