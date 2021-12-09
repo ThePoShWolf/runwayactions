@@ -1,3 +1,4 @@
 COPY . .
 
 RUN_WIN "pwsh.exe -ExecutionPolicy Bypass -File .\windows\script.ps1"
+RUN_LIN "pwsh -ExecutionPolicy Bypass -File .\linux\script.ps1"
