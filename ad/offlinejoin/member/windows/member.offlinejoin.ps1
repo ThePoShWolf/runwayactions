@@ -21,7 +21,7 @@ if ((Get-WmiObject Win32_OperatingSystem).ProductType -ne 2) {
         
         $file = Get-ChildItem $outFolder -Recurse | ?{$_.Name -eq 'blob.txt'}
 
-        djoin /requestodj /loadfile $file.FullName /windowspath c:\windows /localos
+        djoin /requestodj /loadfile $($file.FullName) /windowspath c:\windows /localos
     }
 } else {
     Write-Host 'This is a DC. That is bad.'
