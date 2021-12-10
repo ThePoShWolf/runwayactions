@@ -18,6 +18,6 @@ if ((Get-WmiObject Win32_OperatingSystem).ProductType -eq 2) {
     # Run djoin
     djoin /provision /domain $domain /machine $($settings.'Host Name') /savefile blob.txt
 } else {
-    Write-Host 'This is not a DC.'
+    Write-Host 'This is not a DC. That is bad.'
 }
 Copy-Item .\std.out -Destination .\results
