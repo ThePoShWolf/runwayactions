@@ -16,7 +16,7 @@ if ((Get-WmiObject Win32_OperatingSystem).ProductType -eq 2) {
     # Get computername from the parameters
 
     # Run djoin
-    djoin /provision /domain $domain /machine $($settings.'Host Name') /savefile blob.txt
+    djoin /provision /domain $domain /machine $($settings.'Host Name') /savefile .\results\blob.txt
 } else {
     Write-Host 'This is not a DC. That is bad.'
 }
