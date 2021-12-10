@@ -13,7 +13,7 @@ if ((Get-WmiObject Win32_OperatingSystem).ProductType -ne 2) {
     }
     .\runway -N -S $settings.host download --directory $outFolder
     # djoin
-    $zips = Get-ChildItem .\*.zip
+    $zips = Get-ChildItem $outFolder\*.zip
     if($zips.Count -gt 1) {
         Write-Host 'Too many zips.'
     } else {
