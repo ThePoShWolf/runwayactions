@@ -34,7 +34,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Auth to Runway
         run: |
-          ./runway.bin login -u ${{ secrets.RUNWAY_EMAIL }} -p ${{ secrets.RUNWAY_PASSWORD }}
+          ./runway.bin login -u ${{ secrets.RUNWAY_EMAIL2 }} -p ${{ secrets.RUNWAY_PASSWORD2 }}
 
       - name: Build Each Action
         shell: pwsh
