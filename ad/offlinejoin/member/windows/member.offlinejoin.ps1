@@ -17,7 +17,9 @@ if ((Get-WmiObject Win32_OperatingSystem).ProductType -ne 2) {
     if($zips.Count -gt 1) {
         Write-Host 'Too many zips.'
     } else {
-        $file = Expand-Archive $zips[0].FullName -PassThru | ?{$_.Name -eq 'blob.txt'}
+        Expand-Archive $zips[0].FullName
+        
+        $file = Get-ChildItem $outFolder -Recurse | ?{$_.Name -eq 'blob.txt'}
 
         djoin /requestodj /loadfile $file.FullName /windowspath c:\windows /localos
     }
