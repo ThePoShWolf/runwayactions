@@ -16,7 +16,7 @@ if ($settings.Subject -eq 'Generated') {
     $website = Get-Website -Name $settings.'Website Name'
     if ($null -ne $website) {
         $sslBinding = $website.Bindings.Collection | Where-Object {$_.Protocol -eq 'https'}
-        $domain = $sslBinding.bindingInformation.Split(':')[2]
+        $subject = $sslBinding.bindingInformation.Split(':')[2]
     } else {
         Throw "Website with name '$($settings.'Website Name')' not found."
     }
