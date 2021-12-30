@@ -18,7 +18,7 @@ if($zips.Count -gt 1) {
     
     $file = Get-ChildItem $outFolder -Recurse -Filter *.req
 
-    certreq -submit $($file.FullName) .\results\cert.cer
+    certreq -submit -config SubCA1.runway.lab\LabSubCA1 $($file.FullName) .\results\cert.cer .\results\cert.pfx
 }
 
 # debug
