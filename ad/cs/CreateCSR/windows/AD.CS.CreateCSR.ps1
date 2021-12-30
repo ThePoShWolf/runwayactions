@@ -4,11 +4,10 @@ $settings
 
 # inf stuff
 $inf = @'
-Subject = <subject>
+[NewRequest]
+Subject = "<subject>"
 Exportable = TRUE
-RequestType = CMC
-[RequestAttributes]
-CertificateTemplate = Web Server
+RequestType = PKCS10
 '@
 
 if ($settings.Subject -eq 'Generated') {
