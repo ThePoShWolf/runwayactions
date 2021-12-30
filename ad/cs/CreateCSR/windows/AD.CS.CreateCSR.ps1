@@ -8,6 +8,8 @@ $inf = @'
 Subject = "<subject>"
 Exportable = TRUE
 RequestType = PKCS10
+[RequestAttributes]
+CertificateTemplate = "Web Server"
 '@
 
 if ($settings.Subject -eq 'Generated') {
