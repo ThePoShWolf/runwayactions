@@ -14,7 +14,7 @@
     },
     {
         "Name": "User Password",
-        "Type": 4,
+        "Type": 3,
         "Description": "The password for the user account",
         "IsOptional": false
     }
