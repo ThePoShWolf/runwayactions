@@ -1,0 +1,5 @@
+{
+	"Description": "Test some capabilities of Runway Connectors.",
+	"Language": "PowerShell",
+	"Tags": ["Test", "Sample", "Windows"]
+}
