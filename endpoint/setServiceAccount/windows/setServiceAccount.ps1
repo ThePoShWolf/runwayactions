@@ -1,5 +1,4 @@
 $settings = Get-Content .\settings.json | ConvertFrom-Json
-$settings
 
 <#
 PowerShell 7:
