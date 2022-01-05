@@ -2,31 +2,33 @@
 $settings = Get-Content .\settings.json | ConvertFrom-Json
 $settings
 
+if (-not (Get-WindowsFeature ADCS-Cert-Authority).Installed) {
 # inf stuff
-$inf = @'
+    $inf = @'
 [NewRequest]
 Subject = "<subject>"
 Exportable = TRUE
 RequestType = PKCS10
-[RequestAttributes]
-CertificateTemplate = "Web Server"
 '@
 
-if ($settings.Subject -eq 'Generated') {
-    # Find that website (defaults to the default name)
-    $website = Get-Website -Name $settings.'Website Name'
-    if ($null -ne $website) {
-        $sslBinding = $website.Bindings.Collection | Where-Object {$_.Protocol -eq 'https'}
-        $subject = $sslBinding.bindingInformation.Split(':')[2]
+    if ($settings.Subject -eq 'Generated') {
+        # Find that website (defaults to the default name)
+        $website = Get-Website -Name $settings.'Website Name'
+        if ($null -ne $website) {
+            $sslBinding = $website.Bindings.Collection | Where-Object {$_.Protocol -eq 'https'}
+            $subject = $sslBinding.bindingInformation.Split(':')[2]
+        } else {
+            Throw "Website with name '$($settings.'Website Name')' not found."
+        }
     } else {
-        Throw "Website with name '$($settings.'Website Name')' not found."
+        $subject = $settings.Subject
     }
+
+    $inf = $inf -replace '\<subject\>',"CN=$subject"
+    $inf
+    $inf | Out-File .\certreq.inf
+
+    certreq.exe -new .\certreq.inf .\results\cert.req
 } else {
-    $subject = $settings.Subject
+    Write-Host 'Action is only meant to run on non-CAs.'
 }
-
-$inf = $inf -replace '\<subject\>',"CN=$subject"
-$inf
-$inf | Out-File .\certreq.inf
-
-certreq.exe -new .\certreq.inf .\results\cert.req
