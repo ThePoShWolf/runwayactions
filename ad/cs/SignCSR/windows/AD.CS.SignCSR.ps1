@@ -20,6 +20,8 @@ if ((Get-WindowsFeature ADCS-Cert-Authority).Installed) {
         
         $file = Get-ChildItem $outFolder -Recurse -Filter *.req
 
+        Get-ChildItem .\results -Recurse | Remove-Item -Force -Confirm:$false
+
         certreq -submit -attrib "CertificateTemplate:$($settings.'Certificate Template')" -config SubCA1.runway.lab\LabSubCA1 $($file.FullName) .\results\cert.cer .\results\cert.pfx
     }
 } else {
