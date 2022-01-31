@@ -9,7 +9,6 @@
     {
         "Name": "Output Folder",
         "Type": 0,
-        "DefaultValue": "true",
         "Description": "If specified, the certificate will be dropped here.",
         "IsOptional": true
     }
