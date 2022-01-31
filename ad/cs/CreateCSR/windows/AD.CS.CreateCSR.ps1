@@ -10,6 +10,9 @@ Subject = "<subject>"
 Exportable = TRUE
 RequestType = PKCS10
 '@
+    if ($settings.'Machine Key Set' -eq $true) {
+        $inf += "`nMachineKeySet = true"
+    }
 
     if ($settings.Subject -eq 'Generated') {
         # Find that website (defaults to the default name)

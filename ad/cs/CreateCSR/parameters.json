@@ -12,5 +12,12 @@
         "DefaultValue": "Generated",
         "Description": "Subject to use on the certificate",
         "IsOptional": true
+    },
+    {
+        "Name": "Machine Key Set",
+        "Type": 2,
+        "DefaultValue": "true",
+        "Description": "If check, creates key set in the local machine's context.",
+        "IsOptional": true
     }
 ]
