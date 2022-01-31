@@ -5,12 +5,5 @@
         "DefaultValue": "WebServer",
         "Description": "Name of the Certificate Template to use",
         "IsOptional": true
-    },
-    {
-        "Name": "Output Folder",
-        "Type": 0,
-        "DefaultValue": "true",
-        "Description": "If specified, the certificate will be dropped here.",
-        "IsOptional": true
     }
 ]
